@@ -1,6 +1,8 @@
 package router
 
 import (
+	"os"
+
 	"github.com/Gylmynnn/world-news/controller"
 	"github.com/gofiber/fiber/v2"
 )
@@ -10,5 +12,10 @@ func InitRouter() error {
 
 	app.Get("/scrape/:country", controller.ScrapeNews)
 
-	return app.Listen(":3000")
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "3000"
+	}
+
+	return app.Listen(":" + port)
 }

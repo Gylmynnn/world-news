@@ -1,6 +1,8 @@
 package main
 
-import "github.com/Gylmynnn/world-news/router"
+import (
+	"github.com/Gylmynnn/world-news/router"
+)
 
 func main() {
 	err := router.InitRouter()
@@ -8,3 +10,4 @@ func main() {
 		panic("failed to start server")
 	}
 }
+

@@ -7,6 +7,21 @@ import (
 	"strconv"
 )
 
+func Welcome(c *fiber.Ctx) error {
+	return c.Status(fiber.StatusOK).JSON(
+		util.ResFormatter{
+			Success:    true,
+			StatusCode: fiber.StatusOK,
+			Message:    "welkam, hallo world",
+			Data: fiber.Map{
+				"endpoint":            "https://miniature-kellina-dice24434-c5ba5e44.koyeb.app/scrape/:country?limit=10&page=1",
+				"countries available": [3]string{"indonesian", "japan", "chinese"},
+			},
+		},
+	)
+
+}
+
 func ScrapeNews(c *fiber.Ctx) error {
 	country := c.Params("country")
 	limitParam := c.Query("limit", "10")

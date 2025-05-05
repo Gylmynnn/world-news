@@ -10,6 +10,8 @@ import (
 func InitRouter() error {
 	app := fiber.New()
 
+	app.Get("/", controller.Welcome)
+
 	app.Get("/scrape/:country", controller.ScrapeNews)
 
 	port := os.Getenv("PORT")
